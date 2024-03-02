@@ -367,7 +367,7 @@ function loadItems() {
         order = generateRandomizedArray(96);
         console.log(order);
         usedArr = master3;
-        generateItems(master1, 96);
+        generateItems(master3, 96);
         document.body.appendChild(main);
         children = Array.from(main.children);
         startQuiz();

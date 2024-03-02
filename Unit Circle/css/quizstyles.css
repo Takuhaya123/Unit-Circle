@@ -1,0 +1,41 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 95vh;
+}
+
+.questionDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+}
+
+.questionText {
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+}
+.questionInput {
+    width: 50%;
+    height: 2vw;
+    margin: 1vw 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#backButton {
+    height: 5vh;
+    width: 10%;
+    font-size: 2em;
+}

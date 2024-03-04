@@ -317,17 +317,20 @@ var order = [];
 var qNum = 1;
 var children = {};
 var usedArr = {};
+var qty;
 const main = document.createElement("div");
 
 document.addEventListener("DOMContentLoaded", function() {
     loadItems();
 });
 
-document.addEventListener("keydown", function(event) {
-    if (event.keyCode === 13 &&  usedArr !== null) {
-        checkAnswer(usedArr);
-    }
-});
+function addListener() {
+    document.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13 &&  usedArr !== null) {
+            checkAnswer(usedArr, qty);
+        }
+    });
+}
 
 function generateRandomizedArray(size) {
     const numbers = Array.from({ length: size }, (_, index) => index + 1);
@@ -345,31 +348,34 @@ function loadItems() {
     main.id="container";
     if (filename == "mixedv1") {
         order = generateRandomizedArray(48);
-        console.log(order);
         usedArr = master1;
         generateItems(master1, 48);
+        qty = 48;
         document.body.appendChild(main);
         children = Array.from(main.children);
+        addListener();
         startQuiz();
         return;
     }
     if (filename == "mixedv2") {
         order = generateRandomizedArray(48);
-        console.log(order);
         usedArr = master2;
         generateItems(master2, 48);
+        qty = 48;
         document.body.appendChild(main);
         children = Array.from(main.children);
+        addListener();
         startQuiz();
         return;
     }
     if (filename == "mixedv3") {
         order = generateRandomizedArray(96);
-        console.log(order);
         usedArr = master3;
         generateItems(master3, 96);
+        qty = 96;
         document.body.appendChild(main);
         children = Array.from(main.children);
+        addListener();
         startQuiz();
         return;
     }
@@ -387,8 +393,10 @@ function loadItems() {
         }
     })();
     generateItems(usedArr, 16);
+    qty = 16;
     document.body.appendChild(main);
     children = Array.from(main.children);
+    addListener();
     startQuiz();
 }
 
@@ -419,11 +427,11 @@ function startQuiz() {
     children[0].querySelector('input').focus();
 }
 
-function checkAnswer(arr) {
+function checkAnswer(arr, qty) {
     var input = children[qNum-1].querySelector('input').value;
     if (input == arr[order[qNum]][1]) {
         children[qNum-1].style.display = "none";
-        if (qNum == 15) {
+        if (qNum == qty - 1) {
             backToMain();
             return;
         }

@@ -429,6 +429,10 @@ function startQuiz() {
 
 function checkAnswer(arr, qty) {
     var input = children[qNum-1].querySelector('input').value;
+    input.replace(/r/g, 's');
+    input.replace(/S/g, 's');
+    input.replace(/\s/g, '');
+    
     if (input == arr[order[qNum]][1]) {
         children[qNum-1].style.display = "none";
         if (qNum == qty - 1) {

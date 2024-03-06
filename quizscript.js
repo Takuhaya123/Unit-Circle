@@ -429,6 +429,7 @@ function startQuiz() {
 
 function checkAnswer(arr, qty) {
     var input = children[qNum-1].querySelector('input').value;
+    console.log(input);
     input = input.replace(/r/g, 's');
     input = input.replace(/S/g, 's');
     input = input.replace(/\s/g, '');
